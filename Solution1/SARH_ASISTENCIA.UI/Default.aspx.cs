@@ -28,16 +28,11 @@ namespace SARH_ASISTENCIA.UI
             UsuarioBL usuarioBL = new UsuarioBL();
             String strUsuario = txtUsername.Value;
             String strPassword = txtPassword.Value;
-
-            //usuarioBL.existeUsuario("admin","admin");            
-            //this.Label1.Text = usuarioBL.existeUsuario("admin","admin").ToString();
-            //this.Label1.Text = usuarioBL.existeUsuario(strUsuario, strPassword).ToString();
             if (usuarioBL.existeUsuario(strUsuario, strPassword))
             {
-                Response.Redirect("~/Menu.aspx");  
-
+                Response.Redirect("~/Menu.aspx");
             }
-
+            //Response.Redirect("~/Menu.aspx"); 
         }
     }
 }
