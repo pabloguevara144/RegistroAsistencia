@@ -32,9 +32,9 @@
                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                         <Columns>
                             <asp:CommandField HeaderText="Editar" SelectText="Editar" 
-                                ShowSelectButton="True" />
+                                ShowSelectButton="True"  ControlStyle-CssClass="btn btn-success" />
                             <asp:CommandField ButtonType="Button" HeaderText="Eliminar" 
-                                SelectText="Eliminar" ShowDeleteButton="True" />
+                                SelectText="Eliminar" ShowDeleteButton="True" ControlStyle-CssClass="btn btn-danger" />
                             <asp:BoundField DataField="Usu_alias" HeaderText="ALIAS" />
                             <asp:BoundField DataField="Usu_tipo" HeaderText="TIPO" />
                             <asp:BoundField DataField="Usu_estado" HeaderText="ESTADO" />

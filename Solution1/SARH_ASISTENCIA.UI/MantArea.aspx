@@ -32,10 +32,10 @@
                                 AutoGenerateColumns="False" Height="16px" PageSize="5">
                                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                     <Columns>
-                                        <asp:CommandField HeaderText="Editar" SelectText="Editar" 
+                                        <asp:CommandField HeaderText="Editar" SelectText="Editar"  ControlStyle-CssClass="btn btn-success"
                                             ShowSelectButton="True" />
                                         <asp:CommandField ButtonType="Button" HeaderText="Eliminar" 
-                                            SelectText="Eliminar" ShowDeleteButton="True" />
+                                            SelectText="Eliminar" ShowDeleteButton="True" ControlStyle-CssClass="btn btn-danger" />
                                         <asp:BoundField DataField="Nom_area" HeaderText="Area" />
                                         <asp:BoundField DataField="Sigla_area" HeaderText="Sigla" />
                                     </Columns>

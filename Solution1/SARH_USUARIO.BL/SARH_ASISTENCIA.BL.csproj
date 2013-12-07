@@ -44,8 +44,11 @@
     <Compile Include="Class1.cs" />
     <Compile Include="AreaBL.cs" />
     <Compile Include="EmpleadoBL.cs" />
+    <Compile Include="JustificacionBL.cs" />
+    <Compile Include="TardanzaBL.cs" />
     <Compile Include="TipoBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TipoJustificacionBL.cs" />
     <Compile Include="UsuarioBL.cs">
     </Compile>
   </ItemGroup>

@@ -31,9 +31,9 @@
                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                         <Columns>
                             <asp:CommandField HeaderText="Editar" SelectText="Editar" 
-                                ShowSelectButton="True" />
+                                ShowSelectButton="True" ControlStyle-CssClass="btn btn-success" />
                             <asp:CommandField ButtonType="Button" HeaderText="Eliminar" 
-                                SelectText="Eliminar" ShowDeleteButton="True" />
+                                SelectText="Eliminar  <i class='icon-trash icon-white'></i>"  ShowDeleteButton="True" ControlStyle-CssClass="btn btn-danger" />
                             <asp:BoundField DataField="Cod_empl" HeaderText="CÓDIGO" />
                             <asp:BoundField DataField="Nom_emp" HeaderText="NOMBRE" />
                             <asp:BoundField DataField="Ape_pat" HeaderText="APELL. PATERNO" />

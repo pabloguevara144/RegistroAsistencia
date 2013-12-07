@@ -36,6 +36,7 @@ namespace SARH_ASISTENCIA.UI
             if (resultado == 0)
             {
                 this.lblMensaje.Visible = true;
+                this.txtCodigoEmpleado.Text = "";
                 this.lblMensaje.Text = "Se Guardo con exito";
             }
             else if (resultado == 1)

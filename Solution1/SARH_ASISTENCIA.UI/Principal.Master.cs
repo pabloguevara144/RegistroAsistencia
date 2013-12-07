@@ -11,7 +11,10 @@ namespace SARH_ASISTENCIA.UI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!Page.IsPostBack)
+            {
+                Lblusuario.Text = (string)(Session["s"]);
+            }
         }
     }
 }

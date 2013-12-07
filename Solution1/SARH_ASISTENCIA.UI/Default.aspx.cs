@@ -30,9 +30,9 @@ namespace SARH_ASISTENCIA.UI
             String strPassword = txtPassword.Value;
             if (usuarioBL.existeUsuario(strUsuario, strPassword))
             {
-                Response.Redirect("~/Menu.aspx");
+                Session["s"] = strUsuario;
+                Response.Redirect("~/Menu.aspx");                
             }
-            //Response.Redirect("~/Menu.aspx"); 
         }
     }
 }

@@ -16,6 +16,39 @@ namespace SARH_ASISTENCIA.DA
             _CadenaConexion =  ConfigurationManager.AppSettings["conexion"];
         }
 
+        public List<Empleado> ListHorario()
+        {
+            var bus = new List<Empleado>();
+            using (SqlConnection conn = new SqlConnection(_CadenaConexion))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("LISTAHORARIO", conn);
+                try
+                {
+                    var read = cmd.ExecuteReader();
+                    while (read.Read())
+                    {
+                        bus.Add(new Empleado
+                        {
+                            Nom_hor = read.GetString(read.GetOrdinal("HORARIO")),
+                            Hor_ing = read.GetString(read.GetOrdinal("INGRESO")),
+                            Hor_sal = read.GetString(read.GetOrdinal("SALIDA"))
+                        });
+                    }
+                }
+                catch (Exception)
+                {
+                    bus = null;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+                return bus;
+            }
+        }
+
+
         public List<Empleado> List()
         {
             var bus = new List<Empleado>();

@@ -43,16 +43,20 @@ namespace SARH_ASISTENCIA.UI
                 Txt_ApPaterno.Text = appat;
                 Txt_ApMaterno.Text = apmat;
                 Txt_DNI.Text = dnemp;
-                Txt_Fecha.Text = feemp;
+                //Txt_Fecha.Text = feemp;
                 Txt_Tel.Text = teemp;                
                 Txt_Horario.Text = hoemp;                
                 ListarArea();
                 ListarSexo();
-                if (esemp.Equals("Activo"))
+                ListarHorarios();
+                ListarDia();
+                ListarMes();
+                ListarAño();
+                if (esemp.Equals("ACTIVO"))
                 {
                     CheckBox1.Checked = true; CheckBox2.Checked = false;
                 }
-                else if (esemp.Equals("Inactivo"))
+                else if (esemp.Equals("INACTIVO"))
                 {
                     CheckBox2.Checked = true; CheckBox1.Checked = false;
                 }
@@ -73,8 +77,10 @@ namespace SARH_ASISTENCIA.UI
                     Txt_Empleado.Enabled = false;
                     CboSexo.SelectedItem.Text = seemp;
                     CboArea.SelectedValue = aremp;
+                    CboDia.SelectedItem.Text = feemp.Substring(0, 2);
+                    CboMes.SelectedItem.Text = feemp.Substring(3, 2);
+                    CboAnio.SelectedItem.Text = feemp.Substring(6, 4);
                 }
-
             }
         }
 
@@ -83,18 +89,13 @@ namespace SARH_ASISTENCIA.UI
             try
             {
                 int i = 0;
-                EmpleadoBL a = new EmpleadoBL();                
-                String es;
-                if (CheckBox1.Checked == true)
-                {
-                    es = "A";
-                }
-                else
-                {
-                    es = "I";
-                }                
-                i = a.Registrar(Convert.ToInt32(Txt_Empleado.Text.Trim()), CboArea.Text.Trim(), Txt_Horario.Text.Trim(), Txt_ApPaterno.Text.Trim(), 
-                    Txt_ApMaterno.Text.Trim(),Txt_Nombre.Text.Trim(),Txt_DNI.Text.Trim(),Txt_Fecha.Text.Trim(),Txt_Tel.Text.Trim(),CboSexo.Text.Trim(),es );
+                EmpleadoBL a = new EmpleadoBL();
+                String es, se, fe ;
+                if (CheckBox1.Checked == true) { es = "A"; } else { es = "I"; }
+                if (CboSexo.Text.Trim().Equals("MASCULINO")) { se = "M"; } else { se = "F"; }
+                fe = CboDia.Text.Trim() + "/" + CboMes.Text.Trim() + "/" + CboAnio.Text.Trim();
+                i = a.Registrar(Convert.ToInt32(Txt_Empleado.Text.Trim()), CboArea.Text.Trim(), Txt_Horario.Text.Trim(), Txt_ApPaterno.Text.Trim(),
+                    Txt_ApMaterno.Text.Trim(), Txt_Nombre.Text.Trim(), Txt_DNI.Text.Trim(), fe, Txt_Tel.Text.Trim(), se, es);
                 if (i > 0)
                 {
                     LblResult.CssClass = "text-success";
@@ -114,6 +115,32 @@ namespace SARH_ASISTENCIA.UI
             Response.Redirect("MantEmpleado.aspx");
         }
 
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow fila = GridView1.SelectedRow;
+                String hor = fila.Cells[1].Text;
+                Txt_Horario.Text = hor.Trim();
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            try
+            {
+                GridView gv = (GridView)sender;
+                gv.PageIndex = e.NewPageIndex;
+                ListarHorarios();
+            }
+            catch (Exception)
+            {
+            }
+        }
+
         public void ListarArea()
         {
             List<Area> ar = new AreaBL().List();
@@ -131,8 +158,61 @@ namespace SARH_ASISTENCIA.UI
         }
 
         public void ListarSexo(){
-            CboSexo.Items.Add("Masculino");
-            CboSexo.Items.Add("Femenino");
+            CboSexo.Items.Add("MASCULINO");
+            CboSexo.Items.Add("FEMENINO");
+        }
+
+        public void ListarHorarios()
+        {
+            List<Empleado> ar = new EmpleadoBL().ListHorario();
+            if (ar.ToList().Count() > 0)
+            {
+                GridView1.DataSource = ar.ToList();
+                GridView1.DataBind();
+                //Formato();
+            }
+            else
+            {
+                GridView1.DataSource = null;
+                GridView1.DataBind();
+            }
+        }
+
+        public void ListarDia() {
+            CboDia.Items.Clear();
+            for(int i = 1; i < 32 ; i++){
+                if(i<10){
+                    CboDia.Items.Add("0"+i.ToString());
+                }else{
+                    CboDia.Items.Add(i.ToString());
+                }
+                
+            }
+        }
+
+        public void ListarMes()
+        {
+            CboMes.Items.Clear();
+            for (int i = 1; i < 13; i++)
+            {
+                if (i < 10)
+                {
+                    CboMes.Items.Add("0" + i.ToString());
+                }
+                else
+                {
+                    CboMes.Items.Add(i.ToString());
+                }
+
+            }
+        }
+
+        public void ListarAño()
+        {
+            CboAnio.Items.Clear();
+            for (int i = 1960; i < 2000; i++)
+            {             CboAnio.Items.Add(i.ToString());
+            }
         }
 
     }

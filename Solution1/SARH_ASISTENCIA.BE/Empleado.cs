@@ -18,6 +18,10 @@ namespace SARH_ASISTENCIA.BE
         private String sex_emp;
         private String est_emp;
 
+        private String nom_hor;
+        private String hor_ing;
+        private String hor_sal;
+
         public int Cod_empl { set { cod_empl = value; } get { return cod_empl; } }
         public String Area_id { set { ar_id = value; } get { return ar_id; } }
         public String Hora_id { set { hora_id = value; } get { return hora_id; } }
@@ -29,6 +33,10 @@ namespace SARH_ASISTENCIA.BE
         public String Tel_cel { set { tel_cel = value; } get { return tel_cel; } }
         public String Sex_emp { set { sex_emp = value; } get { return sex_emp; } }
         public String Est_emp { set { est_emp = value; } get { return est_emp; } }
+
+        public String Nom_hor { set { nom_hor = value; } get { return nom_hor; } }
+        public String Hor_ing { set { hor_ing = value; } get { return hor_ing; } }
+        public String Hor_sal { set { hor_sal = value; } get { return hor_sal; } }
 
     }
 }

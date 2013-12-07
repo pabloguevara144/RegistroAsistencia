@@ -60,7 +60,8 @@ namespace SARH_ASISTENCIA.DA
                             Fecha = read.GetString(read.GetOrdinal("D_FECHA")),
                             Hora_ingreso = read.GetString(read.GetOrdinal("D_HORA_INGRESO")),
                             Hora_salida = read.GetString(read.GetOrdinal("D_HORA_SALIDA")),
-                            Timpo_trabajado = read.GetInt32(read.GetOrdinal("N_TIEMPO_TRABAJADO"))
+                            Timpo_trabajado = read.GetInt32(read.GetOrdinal("N_TIEMPO_TRABAJADO")),
+                            Marcaciones = read.GetInt32(read.GetOrdinal("MARCACIONES"))  
                         });
                     }
                 }

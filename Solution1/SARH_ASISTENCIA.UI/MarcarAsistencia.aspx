@@ -66,7 +66,7 @@
             <i class="icon-user"></i></span><asp:TextBox ID="txtCodigoEmpleado" 
                 name="txtCodigoEmpleado" runat="server" Font-Bold="True" 
                 Font-Size="14pt" Height="30px" Width="267px" 
-                ontextchanged="txtCodigoEmpleado_TextChanged"></asp:TextBox>
+                ontextchanged="txtCodigoEmpleado_TextChanged" MaxLength="8"></asp:TextBox>
         </P>
         <P>
            <asp:Button ID="btnRegistrar" CssClass ="btn btn-primary" runat="server" 

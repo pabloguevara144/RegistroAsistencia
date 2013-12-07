@@ -44,8 +44,11 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Area.cs" />
     <Compile Include="Empleado.cs" />
+    <Compile Include="Justificacion.cs" />
+    <Compile Include="Tardanza.cs" />
     <Compile Include="Tipo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TipoJustificacion.cs" />
     <Compile Include="Usuario.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

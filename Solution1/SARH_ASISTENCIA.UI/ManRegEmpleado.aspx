@@ -2,7 +2,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder3" runat="server">
-<div id="content" class="span10">
+    <div id="content" class="span10">
  <div>
 				<ul class="breadcrumb">
 					<li>
@@ -27,17 +27,25 @@
                             <asp:TextBox ID="Txt_Empleado" runat="server"></asp:TextBox>
                             <label class="control-label" for="Txt_DNI">&nbsp;&nbsp;&nbsp;&nbsp;DNI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;&nbsp;</label>
-                            <asp:TextBox ID="Txt_DNI" runat="server"></asp:TextBox> 
+                            <asp:TextBox ID="Txt_DNI" runat="server" MaxLength="8"></asp:TextBox> 
                             <label class="control-label" for="CboArea">&nbsp;&nbsp;&nbsp;&nbsp;Área&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                             <asp:DropDownList ID="CboArea" runat="server" Height="30px" Width="172px"></asp:DropDownList>                            
                         </div>    
                         <div class="control-group">
                             <label class="control-label" for="Txt_ApPaterno">Apell. Paterno&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                             <asp:TextBox ID="Txt_ApPaterno" runat="server"></asp:TextBox>
-                            <label class="control-label" for="Txt_DNI">&nbsp;&nbsp;&nbsp;&nbsp;Fec. Naci.&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                            <asp:TextBox ID="Txt_Fecha" runat="server"></asp:TextBox>
-                            <label class="control-label" for="Txt_Horario">&nbsp;&nbsp;&nbsp;&nbsp;Horario&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                            <label class="control-label" for="Txt_Fecha">&nbsp;&nbsp;&nbsp;&nbsp;Fec. Naci.&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                <asp:DropDownList ID="CboDia" class="checkbox inline" runat="server" Height="31px" Width="60px">
+                                </asp:DropDownList>
+                                <asp:Label ID="Label1" runat="server" Text="/"></asp:Label> 
+                                <asp:DropDownList ID="CboMes" class="checkbox inline" runat="server" Height="31px" Width="60px">
+                                </asp:DropDownList>
+                                <asp:Label ID="Label2" runat="server" Text="/"></asp:Label> 
+                                <asp:DropDownList ID="CboAnio" class="checkbox inline" runat="server" Height="31px" Width="80px">
+                                </asp:DropDownList> 
+                            <label class="control-label" for="Txt_Horario">&nbsp;&nbsp;&nbsp;Horario&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                             <asp:TextBox ID="Txt_Horario" runat="server"></asp:TextBox>
+                            <a class="btn" href="#pricingShared" role="button" data-toggle="modal">Ver</a>
                         </div> 
 
                         <div class="control-group">
@@ -64,8 +72,9 @@
                         <div class="form-actions"> 
                                     <asp:Button ID="Retornar" runat="server" Text="Retornar" 
                                     cssclass="btn btn-inverse"  Width="85px" onclick="Retornar_Click"></asp:Button>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="Registrar" runat="server" Text="Registrar" 
-                                    cssclass="btn btn-primary" ></asp:Button>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="Registrar" 
+                                        runat="server" Text="Registrar" 
+                                    cssclass="btn btn-primary" onclick="Registrar_Click" ></asp:Button>
                         </div>
                         <br />
                         <br />
@@ -75,9 +84,42 @@
                             </div>
                         </div>
                     </fieldset>
+                
+                <div id ="pricingShared" class="modal hide fade">                 
+                    <div class="modal-header"><h4>Horarios</h4></div>
+                    <div class="modal-body">
+                       <asp:GridView ID="GridView1" runat="server" Width="100%" CellPadding="4" 
+                        ForeColor="#333333" GridLines="None" onselectedindexchanged="GridView1_SelectedIndexChanged" AllowPaging="True" 
+                        onpageindexchanging="GridView1_PageIndexChanging"  
+                        AutoGenerateColumns="False" Height="16px" PageSize="5">
+                        <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                        <Columns>
+                            <asp:CommandField HeaderText="Seleccionar" SelectText="Seleccionar" 
+                                ShowSelectButton="True" />
+                            <asp:BoundField DataField="Nom_hor" HeaderText="HORARIO" />
+                            <asp:BoundField DataField="Hor_ing" HeaderText="INGRESO" />
+                            <asp:BoundField DataField="Hor_sal" HeaderText="SALIDA" />
+                        </Columns>
+                        <EditRowStyle BackColor="#999999" />
+                        <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                        <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                        <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+                        <RowStyle HorizontalAlign="Center" VerticalAlign="Middle" BackColor="#F7F6F3" 
+                            ForeColor="#333333" />
+                        <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+                        <SortedAscendingCellStyle BackColor="#E9E7E2" />
+                        <SortedAscendingHeaderStyle BackColor="#506C8C" />
+                        <SortedDescendingCellStyle BackColor="#FFFDF8" />
+                        <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+                    </asp:GridView>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn" data-dismiss="modal">Salir</button>
+                    </div>
+                </div>
                 </form>
-            </div>
         </div>
     </div>
 </div>
 </asp:Content>
+

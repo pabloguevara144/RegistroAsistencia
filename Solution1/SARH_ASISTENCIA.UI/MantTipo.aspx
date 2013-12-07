@@ -34,9 +34,9 @@
                         AutoGenerateColumns="False" PageSize="5" Height="16px">
                             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                             <Columns>
-                                <asp:CommandField HeaderText="Editar" SelectText="Editar" 
+                                <asp:CommandField HeaderText="Editar" SelectText="Editar"  ControlStyle-CssClass="btn btn-success" 
                                     ShowSelectButton="True" />
-                                <asp:CommandField ButtonType="Button" HeaderText="Eliminar" 
+                                <asp:CommandField ButtonType="Button" HeaderText="Eliminar" ControlStyle-CssClass="btn btn-danger"
                                     SelectText="Eliminar" ShowDeleteButton="True" />
                                 <asp:BoundField DataField="Tipo_id" HeaderText="Código">
                                 <ControlStyle Width="20px" />

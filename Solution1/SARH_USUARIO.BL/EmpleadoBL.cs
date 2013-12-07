@@ -10,6 +10,20 @@ namespace SARH_ASISTENCIA.BL
     {
         EmpleadoDA ar = new EmpleadoDA();
 
+
+
+        public List<Empleado> ListHorario()
+        {
+            try
+            {
+                return ar.ListHorario();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
         public List<Empleado> List()
         {
             try
